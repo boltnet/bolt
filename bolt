@@ -1,0 +1,104 @@
+#!/bin/sh
+
+usage="Usage: $(basename $0) [-h][-a account][-c comment][-p path] token url
+  -h - help
+  -w - wait for page to be cloned before returning (defaults to don't wait)
+  -l - print long url for created bolt (defaults to short url)
+  -a account - bo.lt account to put bolt in (defaults to first account)
+  -c comment - comment to associate with the create bolt (defaults to none)
+  -p path - path to give bolt
+  token - bolt secret token, generate here: https://bo.lt/app/settings#api-app-form
+  url - url to bolt
+
+Creates a bolt from 'url' in the account associated with 'token' on BO.LT, http://bo.lt/
+"
+
+if ! which curl >/dev/null; then
+  echo "Error: unable to find the command 'curl', please install before running this command" >&2
+  exit 1
+fi
+
+account=
+comment=
+wait=0
+link_name=short_url
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -h|-\?)
+      echo "$usage"
+      exit 0
+    ;;
+    -w)
+      wait=1
+    ;;
+    -l)
+      link_name=default_url
+    ;;
+    -a)
+      if [ -z "$2" ]; then
+        echo "Error: option $1 expected argument" >&2
+        echo $usage >&2
+        exit 1
+      fi
+      account="$2"
+      shift
+    ;;
+    -c)
+      if [ -z "$2" ]; then
+        echo "Error: option $1 expected argument" >&2
+        echo $usage >&2
+        exit 1
+      fi
+      comment="$2"
+      shift
+    ;;
+    -p)
+      if [ -z "$2" ]; then
+        echo "Error: option $1 expected argument" >&2
+        echo $usage >&2
+        exit 1
+      fi
+      path="$2"
+      shift
+    ;;
+    *)
+      break
+    ;;
+  esac
+  shift
+done
+
+if [ $# -ne 2 ]; then
+  echo "Error: expect exactly 1 token and 1 url argument" >&2
+  echo "$usage" >&2
+  exit 1 
+fi
+
+token="$1"
+url="$2"
+
+if [ -z "$path" ]; then
+  timestamp="$(date +%Y-%m-%d_%H_%M_%S)"
+  path=$(echo "$url/$timestamp" | sed -e 's/http:\/\///' -e 's/[^A-Za-z0-9\/\-\.\_]/-/g' -e 's/^[\/\_]//' -e 's/\/$//')
+fi
+
+action='curl --silent --get "https://api.bo.lt/bolt/create.plain" --data-urlencode "access_token=$token" --data-urlencode "url=$url" --data-urlencode "path=$path"'
+if [ ! -z "$comment" ]; then
+ action="$action --data-urlencode \"comment=\$comment\""
+fi
+if [ ! -z "$account" ]; then
+  action="$action --data-urlencode \"account_id=\$account\""
+fi
+if [ "$wait" -eq "1" ]; then
+  action="$action --data-urlencode \"async=false\""
+fi
+
+bolt="$(eval $action)"
+
+if echo "$bolt" | grep "error" >/dev/null; then
+  echo "Error: $(echo "$bolt" | grep "error.message" | awk -F "\t" '{print $2}')" >&2
+  exit 1
+fi
+
+echo "$bolt" | grep "bolt.$link_name" | awk -F "\t" '{print $2}'
+
