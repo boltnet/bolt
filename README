@@ -1,0 +1,16 @@
+
+What Do We Do?
+
+BO.LT is a Page Sharing Service. When you put a page on BO.LT, it is a copy. A page on BO.LT is called a bolt.
+
+We let you "remix" pages and share them with the people you want to reach. We run a distributed delivery network that is tuned for fast serving editing and sharing of pages.
+
+Getting Started
+
+Apps on BO.LT leverage a REST API. The first step is to get your App Key and App Secret. Log into BO.LT and go to the your secure Settings page. Find the "API App Settings" section. Give your App a name, and click "Save". Then we'll give you your App Key and App Secret.  More details on the API can be found here: http://dev.bo.lt/apps-on-bolt
+
+
+What is 'bolt'
+
+'bolt' is a command line program written in sh that allows you to create BO.LT pages (bolts). 
+
