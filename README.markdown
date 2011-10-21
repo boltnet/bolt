@@ -22,16 +22,16 @@ A page on the BO.LT network is referred to as a bolt
 
 A bolt:
 
-  - can be easily shared on a number of networks (Facebook, Twitter, etc)
-  - can have a descriptive url, that people will notice (e.g. http://mary.bo.lt/flying_pigs)
-  - allows you to add your comment on the page itself (so even if its re-tweeted your comments aren't lost)
-  - allows you to automatically put your identity and link back to your site on the page
-  - supports an intutive in-browser editor that can modify the live page.
-  - doesn't change when the original site changes its page.
-  - is fast as it runs on an edge network
-  - will appear in your showcase of bolts as well as other showcases on BO.LT (e.g. [Reddit Feed](http://reddit.bo.lt))
-  - has segmented view metrics
-  - can be setup to autmatically integrate your metrics provider
+  - Can be easily shared on a number of networks (Facebook, Twitter, etc)
+  - Can have a descriptive URL, that people will notice (e.g. http://usain.bo.lt/vs-kanye)
+  - Allows you to add your comment on the page itself (so even if it's re-tweeted your comments aren't lost)
+  - Allows you to automatically put your identity and link back to your site on the page
+  - Supports an intuitive in-browser editor that can modify the live page.
+  - Doesn't change when the original site changes its page.
+  - Is fast as it runs on an edge network
+  - Will appear in your showcase of bolts as well as other showcases on BO.LT (e.g. [Reddit Feed](http://reddit.bo.lt))
+  - Has segmented view metrics
+  - Can be setup to automatically integrate your metrics provider
 
 
 Documentation on the BO.LT api can be found [here](http://dev.bo.lt)
