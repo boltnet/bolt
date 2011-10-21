@@ -1,4 +1,3 @@
-
 bolt
 ============
 
@@ -6,11 +5,11 @@ bolt
 
 The first step to using `bolt` is to get your token (Access Token):
 
-  1. log into BO.LT (its free to create an account) 
-  2. go to the [API App Settings section on the Settings page](https://bo.lt/app/settings#api-app-form). 
-  3. provide an application name (anything will do, for example my-bolt)
-  4. save your application
-  5. click *Generate an access token for your App*
+  1. Log into BO.LT (it's free to create an account) 
+  2. Go to the [API App Settings section on the Settings page](https://bo.lt/app/settings#api-app-form). 
+  3. Provide an application name (anything will do, for example my-bolt)
+  4. Save your application
+  5. Click *Generate an access token for your App*
 
 BO.LT
 =====
