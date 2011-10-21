@@ -2,13 +2,13 @@
 bolt
 ============
 
-`bolt` is a command line program written in shell that allows you to create BO.LT page from a url.
+`bolt` is a command line program written in shell that allows you to create a BO.LT page from a url.
 
 The first step to using `bolt` is to get your token (Access Token):
 
   1. log into BO.LT (its free to create an account) 
   2. go to the [API App Settings section on the Settings page](https://bo.lt/app/settings#api-app-form). 
-  3. provide an application name (anything will do, for example twitter-feed)
+  3. provide an application name (anything will do, for example my-bolt)
   4. save your application
   5. click *Generate an access token for your App*
 
